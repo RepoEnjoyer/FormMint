@@ -1,0 +1,42 @@
+name: Feature request
+description: Propose a focused improvement to the original-accessory workflow.
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: FormMint will not add credential handling, trend copying, profit promises, or paid services required for core use.
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Creator workflow
+      description: What are you trying to finish, and where does the current workflow slow you down?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Smallest useful improvement
+    validations:
+      required: true
+  - type: textarea
+    id: geometry
+    attributes:
+      label: Geometry and validation impact
+      description: Explain new mesh behavior, limits, export changes, or official rules involved.
+  - type: textarea
+    id: trust
+    attributes:
+      label: Originality, privacy, and cost impact
+      description: Would this add network access, credentials, paid services, copied assets, or new fee assumptions?
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: The core feature can work locally without a paid service.
+          required: true
+        - label: This does not automate copying or Marketplace spam.
+          required: true
