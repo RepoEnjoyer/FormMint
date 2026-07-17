@@ -3,7 +3,7 @@ export const BODY_SCALES = ['Normal', 'Classic', 'Slender'] as const;
 
 export type DesignKind = (typeof DESIGN_KINDS)[number];
 export type BodyScale = (typeof BODY_SCALES)[number];
-export type ViewName = 'forge' | 'concept' | 'launch';
+export type ViewName = 'preflight' | 'forge' | 'concept' | 'launch';
 
 export interface AccessoryParameters {
   design: DesignKind;

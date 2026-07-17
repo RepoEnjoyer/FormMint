@@ -1,10 +1,25 @@
-# Blender-to-Studio workflow
+# Inspect-to-Studio workflow
 
-FormMint removes the blank-canvas problem. Blender and Studio finish the job.
+FormMint catches common model problems before Blender and Studio finish the job. It is a planning preflight, not a substitute for Studio validation.
 
-## 1. Export from FormMint
+## 1. Inspect locally in FormMint
 
-Keep the live gate free of failures, save the project, and export a GLB. GLB preserves one merged mesh object and the preview material. OBJ is available as a compatibility fallback.
+Open **Inspect** and choose one `.glb`, `.gltf`, or `.obj` model. A `.gltf` may be selected with its local `.bin` and texture dependencies. FormMint does not upload the files or retain their filenames.
+
+Review the mesh count, triangles, vertices, bounds, origin offset, normals, UV coverage, open edges, non-manifold edges, and zero-area triangles. Select a finding to highlight supported problem edges in the viewport.
+
+If useful, choose **Prepare safe copy**. This creates a non-destructive copy that can:
+
+- remove zero-area faces;
+- merge render meshes;
+- weld exact duplicate vertices;
+- recalculate normals;
+- recenter the model; and
+- scale an oversized model into the selected planning boundary.
+
+It does not fill holes, repair non-manifold topology, unwrap UVs, retopologize, or guarantee acceptance. Export the prepared GLB only after checking that the changes suit the design.
+
+The separate **Blockout** workspace remains available for generating a simple crown or halo starting mesh when there is no source model yet.
 
 ## 2. Inspect in Blender
 
@@ -20,7 +35,7 @@ Work through this order:
 6. Improve the primitive UV layout before painting a final texture.
 7. Keep texture dimensions at or below the current Marketplace limit.
 8. Apply rotation and scale with `Ctrl+A` after the final proportions are settled.
-9. Check the final triangle count. Modifiers can increase it beyond FormMint's original count.
+9. Check the final triangle count. Modifiers can increase it beyond FormMint's inspected count.
 10. Export the finished mesh using Roblox's current Blender export guidance.
 
 Do not blindly run destructive cleanup operations. Inspect the result after every major change and keep incremental project versions.
@@ -29,7 +44,7 @@ Do not blindly run destructive cleanup operations. Inspect the result after ever
 
 Use **File > 3D Importer** and select the finished `.fbx` or `.gltf` file. Review every importer warning.
 
-The imported model must still follow the current rigid accessory specifications. FormMint cannot validate Studio properties or the final exported file after Blender changes.
+The imported model must still follow the current rigid accessory specifications. FormMint cannot validate Studio properties, attachments, moderation, or the final exported file after Blender changes.
 
 ## 4. Use the Accessory Fitting Tool
 

@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { buildListingDraft, buildReferencePrompt } from '../content';
 import type { ProjectBrief, SavedProject } from '../types';
 import { Icon } from './Icon';
 
@@ -16,21 +14,13 @@ interface ConceptViewProps {
 }
 
 export function ConceptView({ project, saved, onChange, onLoad, onDelete, onSave, onNew, onExportProject, onImportProject }: ConceptViewProps) {
-  const [copied, setCopied] = useState('');
-  const prompt = buildReferencePrompt(project);
-  const listing = buildListingDraft(project);
   const update = <K extends keyof ProjectBrief>(key: K, value: ProjectBrief[K]) => onChange({ ...project, [key]: value });
-  const copy = async (label: string, value: string) => {
-    await navigator.clipboard.writeText(value);
-    setCopied(label);
-    window.setTimeout(() => setCopied(''), 1_800);
-  };
 
   return (
     <div className="page-view concept-view">
-      <header className="page-header"><div><span className="eyebrow">Originality before geometry</span><h1>Concept lab</h1><p>Build a precise design brief, then use it as your reference-sheet prompt and listing foundation.</p></div><div><button className="secondary-button" onClick={onNew}><Icon name="plus" size={17} /> New</button><button className="primary-button" onClick={onSave}><Icon name="save" size={17} /> Save project</button></div></header>
+      <header className="page-header"><div><span className="eyebrow">Keep decisions with the file</span><h1>Project notes</h1><p>Record the intent behind an accessory and keep a portable local project beside the source, prepared model, and preflight report.</p></div><div><button className="secondary-button" onClick={onNew}><Icon name="plus" size={17} /> New</button><button className="primary-button" onClick={onSave}><Icon name="save" size={17} /> Save project</button></div></header>
       <div className="concept-grid">
-        <section className="surface-card brief-card"><div className="section-title"><span>01</span><div><h2>Design brief</h2><p>Specific inputs create more coherent references.</p></div></div>
+        <section className="surface-card brief-card"><div className="section-title"><span>01</span><div><h2>Design brief</h2><p>Keep the creative intent explicit while the mesh changes.</p></div></div>
           <div className="form-grid two"><label className="field"><span>Project name</span><input value={project.name} maxLength={100} onChange={(event) => update('name', event.target.value)} /></label><label className="field"><span>Collection</span><input value={project.collection} maxLength={100} onChange={(event) => update('collection', event.target.value)} placeholder="Signal Series" /></label></div>
           <div className="form-grid two"><label className="field"><span>Core item</span><input value={project.coreNoun} maxLength={80} onChange={(event) => update('coreNoun', event.target.value)} placeholder="crown, halo, horns" /></label><label className="field"><span>Palette</span><input value={project.palette} maxLength={120} onChange={(event) => update('palette', event.target.value)} placeholder="charcoal and electric lime" /></label></div>
           <label className="field"><span>Aesthetic direction</span><input value={project.aesthetic} maxLength={160} onChange={(event) => update('aesthetic', event.target.value)} placeholder="clean futuristic streetwear" /></label>
@@ -40,9 +30,9 @@ export function ConceptView({ project, saved, onChange, onLoad, onDelete, onSave
         </section>
 
         <div className="concept-results">
-          <section className="surface-card prompt-card"><div className="section-title"><span>02</span><div><h2>Reference-sheet prompt</h2><p>Works with the image generator you already use.</p></div></div><div className="generated-copy"><p>{prompt}</p><button onClick={() => { void copy('prompt', prompt); }}><Icon name={copied === 'prompt' ? 'check' : 'copy'} size={16} /> {copied === 'prompt' ? 'Copied' : 'Copy prompt'}</button></div><small>Reference art is a guide, not a finished upload. Confirm the generator permits commercial use and rebuild the design as your own clean mesh.</small></section>
-          <section className="surface-card listing-card"><div className="section-title"><span>03</span><div><h2>Listing starter</h2><p>Clear language without keyword spam.</p></div></div><div className="title-options">{listing.titles.map((title) => <button key={title} onClick={() => { void copy(title, title); }}><span>{title}</span><Icon name={copied === title ? 'check' : 'copy'} size={15} /></button>)}</div><div className="description-draft"><p>{listing.description}</p><button onClick={() => { void copy('description', listing.description); }}><Icon name={copied === 'description' ? 'check' : 'copy'} size={15} /> {copied === 'description' ? 'Copied' : 'Copy'}</button></div></section>
-          <section className="surface-card file-card"><div className="section-title"><span>04</span><div><h2>Portable project</h2><p>Keep the brief and exact parameters together.</p></div></div><div className="file-actions"><button className="secondary-button" onClick={onExportProject}><Icon name="download" size={17} /> Export project</button><label className="secondary-button file-input"><Icon name="upload" size={17} /> Import project<input type="file" accept="application/json,.json" onChange={(event) => { onImportProject(event.target.files?.[0]); event.target.value = ''; }} /></label></div></section>
+          <section className="surface-card file-card"><div className="section-title"><span>02</span><div><h2>Portable project</h2><p>Move the brief and blockout parameters without an account.</p></div></div><div className="file-actions"><button className="secondary-button" onClick={onExportProject}><Icon name="download" size={17} /> Export project</button><label className="secondary-button file-input"><Icon name="upload" size={17} /> Import project<input type="file" accept="application/json,.json" onChange={(event) => { onImportProject(event.target.files?.[0]); event.target.value = ''; }} /></label></div></section>
+          <section className="surface-card file-card"><div className="section-title"><span>03</span><div><h2>Recommended work packet</h2><p>Keep these files together before Studio import.</p></div></div><ol className="packet-list"><li><strong>Source model</strong><span>Your editable Blender or modelling file.</span></li><li><strong>Prepared GLB</strong><span>The reversible copy exported from Inspect.</span></li><li><strong>Preflight report</strong><span>The local findings and remaining manual work.</span></li><li><strong>Preview PNG</strong><span>A truthful reference for review and thumbnail planning.</span></li></ol></section>
+          <section className="trust-card"><Icon name="shield" /><div><strong>No prompt filler, trend scraping, or upload credentials</strong><p>FormMint now concentrates on model preparation work that can be checked locally. Studio and Roblox remain the authority for final validation and publishing.</p></div></section>
         </div>
       </div>
 

@@ -1,6 +1,6 @@
 # Contributing to FormMint
 
-FormMint welcomes focused improvements that make original rigid-accessory creation safer, clearer, and easier to learn.
+FormMint welcomes focused improvements that make rigid-accessory model inspection safer, clearer, and easier to learn.
 
 ## Before starting
 
@@ -32,13 +32,23 @@ npm audit
 ## Design rules
 
 1. **Never promise acceptance or profit.** Studio, moderation, demand, and current official policy remain outside the app.
-2. **Generated means editable starting point.** Surface limitations honestly and direct creators to Blender and AFT.
+2. **Prepared means editable handoff.** Surface limitations honestly and direct creators to Blender and AFT.
 3. **Rules need sources and dates.** Technical limits and fees must link to current official documentation.
 4. **Safety limits are product features.** Keep imported files, saved projects, geometry complexity, and user text bounded.
 5. **Every visual control needs a keyboard path.** Do not make orbiting or dragging the only way to complete a task.
 6. **Small dependencies win.** Add a package only when it offers durable functionality that cannot be maintained locally.
 
 ## Geometry changes
+
+Import and preflight changes must:
+
+- keep source models on the device and avoid retaining filenames;
+- bound file count, byte size, vertices, triangles, and overlay generation;
+- avoid silently fetching remote model dependencies;
+- leave the original source geometry untouched; and
+- ship with malformed, ambiguous, and edge-case fixtures where relevant.
+
+Blockout silhouette changes must:
 
 New silhouette families must:
 
@@ -58,7 +68,7 @@ Include:
 
 - the problem and chosen approach;
 - screenshots using synthetic project data for interface changes;
-- tests for geometry, validation, storage, or calculator changes;
+- tests for import, preflight, geometry, validation, or storage changes;
 - privacy, security, accessibility, and performance considerations; and
 - updated source dates when official limits change.
 

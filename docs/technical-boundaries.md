@@ -1,44 +1,53 @@
 # Technical and trust boundaries
 
-## What FormMint verifies
+## Imported-model checks
 
-The live gate evaluates the geometry held in browser memory:
+FormMint traverses the selected model in browser memory, bakes scene transforms into temporary geometry, and evaluates:
 
-- triangle and vertex counts;
-- width, height, and depth against the selected Hat body-scale boundary;
-- whether the export object is built as one merged mesh;
-- UV attribute presence; and
-- position-based edge pairing for likely exposed geometric edges.
+- render mesh, triangle, vertex, material, texture, and connected-component counts;
+- dimensions, center offset, and selected Hat planning bounds;
+- open edges, edges shared by more than two faces, and zero-area triangles;
+- UV, normal, vertex-color, and skinning attributes; and
+- detected texture dimensions.
 
-The edge check treats vertices at the same quantized position as the same point. This handles normal UV seams, but it is not a full solid-modelling or self-intersection proof.
+The edge scan quantizes positions to five decimal places before pairing edges. This reduces false holes at ordinary UV or normal seams, but it is not a complete manifold, winding, self-intersection, surface-area, or solid-volume proof.
 
-## What FormMint cannot verify
+## Prepared-copy pipeline
 
-FormMint cannot prove:
+`prepareSafeGeometry` never mutates the parsed source scene. It creates new geometry, removes detected zero-area triangles, merges render meshes, optionally preserves a complete UV channel, removes rigid-incompatible color and skin attributes, welds exact duplicate vertices, rebuilds normals, recenters, and scales down when selected Hat bounds are exceeded.
 
-- Marketplace acceptance or moderation outcomes;
-- legal originality or commercial-use rights;
-- demand, conversion, profit, or price-floor compliance;
-- final geometry after the user edits or exports through another tool;
-- Roblox Studio properties, attachment placement, animation fit, or category correctness;
-- final texture quality, PBR maps, compression, or moderation; or
-- whether a generated concept resembles an existing item that appeared after the user's last search.
+The pipeline deliberately does not:
 
-## Procedural geometry model
+- decimate or retopologize;
+- boolean-union shells;
+- fill arbitrary holes;
+- invent or unwrap UVs;
+- preserve incomplete material groups; or
+- claim that the result will pass Roblox validation.
 
-Each silhouette family produces closed primitive shells. FormMint transforms and merges them into one indexed `BufferGeometry`, then computes normals and bounding volumes. A merged object can still contain intersecting or disconnected shells. That is why the product calls the output a starting mesh and includes Blender cleanup in the required workflow.
+## Import threat model
+
+- Total selection: at most 64 files and 64 MiB.
+- Parsed scene: at most 500,000 vertices and 750,000 triangles.
+- One GLB, GLTF, or OBJ model per inspection.
+- GLTF resources resolve only to selected local files, embedded data, or temporary blob URLs.
+- No imported HTML, scripts, or remote URLs are executed.
+- OBJ material libraries are not interpreted in version 2.0.
+
+These limits reduce accidental browser exhaustion; they do not make arbitrary third-party files trustworthy. Keep the browser and dependencies current.
+
+## What FormMint cannot prove
+
+FormMint cannot prove Marketplace acceptance, moderation, ownership, originality, demand, profit, exact Studio hierarchy, attachment placement, avatar fit, PBR quality, or the state of a file after another tool edits it.
+
+Roblox Studio's 3D Importer, Accessory Fitting Tool, UGC validation, and current official documentation remain authoritative.
 
 ## Export model
 
-- GLB export uses Three.js `GLTFExporter` with one mesh and one standard material.
-- OBJ export contains one mesh object but does not include a separate material file.
-- PNG export captures the local WebGL canvas.
-- Project export is readable JSON containing the brief and procedural parameters.
+- Prepared GLB uses Three.js `GLTFExporter` with one mesh and one standard preview material.
+- Blockout GLB and OBJ export one generated mesh object.
+- PNG captures the local WebGL canvas.
+- Preflight JSON includes metrics, findings, the selected planning boundary, a disclaimer, and generation time.
+- Project JSON contains the user-entered brief and blockout parameters.
 
-No export contains the user's computer path, account identity, or Marketplace credentials.
-
-## Privacy model
-
-The application has no runtime fetch client, telemetry SDK, remote asset, account, cookie, or advertising code. Projects are stored in one versioned local-storage record. Explicit links to official documentation can navigate to the external site only after the user selects them.
-
-Browser storage and exported project JSON are not encrypted. Anyone with access to the same browser profile or exported file may read the brief.
+Preflight exports contain no source filename, computer path, account identity, device information, or Marketplace credential.

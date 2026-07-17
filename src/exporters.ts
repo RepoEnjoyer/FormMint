@@ -4,6 +4,7 @@ import { OBJExporter } from 'three/examples/jsm/exporters/OBJExporter.js';
 import { safeFilename } from './content';
 import { serializeProject } from './storage';
 import type { ProjectBrief } from './types';
+import type { PreflightReport } from './preflight';
 
 function download(blob: Blob, filename: string): void {
   const url = URL.createObjectURL(blob);
@@ -40,6 +41,33 @@ export async function downloadGlb(geometry: BufferGeometry, project: ProjectBrie
   } finally {
     disposeMesh(mesh);
   }
+}
+
+export async function downloadPreparedGlb(geometry: BufferGeometry, name: string): Promise<void> {
+  const project = {
+    name,
+    parameters: { color: '#c9f15b', roughness: 0.42, metalness: 0.08 },
+  } as ProjectBrief;
+  const mesh = exportMesh(geometry, project);
+  try {
+    const result = await new GLTFExporter().parseAsync(mesh, { binary: true, onlyVisible: true });
+    if (!(result instanceof ArrayBuffer)) throw new Error('GLB exporter returned an unexpected result.');
+    download(new Blob([result], { type: 'model/gltf-binary' }), `${safeFilename(name)}-prepared.glb`);
+  } finally {
+    disposeMesh(mesh);
+  }
+}
+
+export function downloadPreflightReport(report: PreflightReport, name: string): void {
+  const safeReport = {
+    ...report,
+    generatedAt: new Date().toISOString(),
+    privacy: 'The report intentionally excludes source file paths, source filenames, user identity, and device information.',
+  };
+  download(
+    new Blob([`${JSON.stringify(safeReport, null, 2)}\n`], { type: 'application/json' }),
+    `${safeFilename(name)}-preflight.json`,
+  );
 }
 
 export function downloadObj(geometry: BufferGeometry, project: ProjectBrief): void {

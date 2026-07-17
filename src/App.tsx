@@ -3,6 +3,7 @@ import { ConceptView } from './components/ConceptView';
 import { ForgeView } from './components/ForgeView';
 import { Icon } from './components/Icon';
 import { LaunchView } from './components/LaunchView';
+import { PreflightView } from './components/PreflightView';
 import { createAccessoryGeometry } from './geometry';
 import { downloadGlb, downloadObj, downloadPreview, downloadProject } from './exporters';
 import { createProject } from './specs';
@@ -30,7 +31,7 @@ function savedToProject(saved: SavedProject): ProjectBrief {
 export default function App() {
   const initial = useMemo(() => loadWorkspace(typeof window === 'undefined' ? undefined : window.localStorage), []);
   const [workspace, setWorkspace] = useState<Workspace>(initial.workspace);
-  const [view, setView] = useState<ViewName>('forge');
+  const [view, setView] = useState<ViewName>('preflight');
   const [showBounds, setShowBounds] = useState(true);
   const [mobileNav, setMobileNav] = useState(false);
   const [toast, setToast] = useState(initial.warning ?? '');
@@ -109,25 +110,27 @@ export default function App() {
     }
   };
 
-  const navItems: Array<{ id: ViewName; label: string; detail: string; icon: 'box' | 'spark' | 'shield' }> = [
-    { id: 'forge', label: 'Forge', detail: 'Shape and export', icon: 'box' },
-    { id: 'concept', label: 'Concept', detail: 'Brief and prompt', icon: 'spark' },
-    { id: 'launch', label: 'Launch', detail: 'Validate and price', icon: 'shield' },
+  const navItems: Array<{ id: ViewName; label: string; detail: string; icon: 'upload' | 'box' | 'spark' | 'shield' }> = [
+    { id: 'preflight', label: 'Inspect', detail: 'Import and repair', icon: 'upload' },
+    { id: 'forge', label: 'Blockout', detail: 'Shape a starting mesh', icon: 'box' },
+    { id: 'concept', label: 'Notes', detail: 'Brief and project files', icon: 'spark' },
+    { id: 'launch', label: 'Finish', detail: 'Studio checklist', icon: 'shield' },
   ];
 
   return (
     <div className="app-shell">
       <a className="skip-link" href="#main-content">Skip to workspace</a>
       <header className="app-header">
-        <a className="brand" href="#main-content" onClick={() => setView('forge')} aria-label="FormMint forge"><img src="./icon.svg" alt="" /><span><strong>FormMint</strong><small>Accessory workbench</small></span></a>
+        <a className="brand" href="#main-content" onClick={() => setView('preflight')} aria-label="FormMint model preflight"><img src="./icon.svg" alt="" /><span><strong>FormMint</strong><small>Accessory preflight</small></span></a>
         <nav className={mobileNav ? 'open' : ''} aria-label="Workspace views">{navItems.map((item) => <button key={item.id} className={view === item.id ? 'active' : ''} onClick={() => { setView(item.id); setMobileNav(false); }}><Icon name={item.icon} size={18} /><span><strong>{item.label}</strong><small>{item.detail}</small></span></button>)}</nav>
-        <div className="header-actions">{storageWarning && <span className="storage-status"><span /> Storage blocked</span>}<button className="header-save" onClick={saveProject}><Icon name="save" size={17} /> <span>Save project</span></button><button className="menu-button" aria-label="Toggle navigation" onClick={() => setMobileNav(!mobileNav)}><Icon name={mobileNav ? 'x' : 'menu'} /></button></div>
+        <div className="header-actions">{storageWarning ? <span className="storage-status"><span /> Storage blocked</span> : <span className="header-privacy"><span /> Local only</span>}{view !== 'preflight' && <button className="header-save" onClick={saveProject}><Icon name="save" size={17} /> <span>Save project</span></button>}<button className="menu-button" aria-label="Toggle navigation" onClick={() => setMobileNav(!mobileNav)}><Icon name={mobileNav ? 'x' : 'menu'} /></button></div>
       </header>
 
       <main id="main-content">
+        {view === 'preflight' && <PreflightView project={workspace.active} onToast={setToast} />}
         {view === 'forge' && <ForgeView project={workspace.active} geometry={geometry} validation={validation} showBounds={showBounds} onShowBounds={setShowBounds} onProjectName={(name) => updateActive({ name })} onParameters={updateParameters} onBodyScale={(bodyScale) => updateActive({ bodyScale })} onCanvas={onCanvas} onGlb={() => { void exportGlb(); }} onObj={() => { downloadObj(geometry, workspace.active); setToast('OBJ exported.'); }} onPreview={() => { if (canvasRef.current === null) setToast('3D preview is not ready yet.'); else { downloadPreview(canvasRef.current, workspace.active); setToast('Preview image exported.'); } }} onSave={saveProject} />}
         {view === 'concept' && <ConceptView project={workspace.active} saved={workspace.saved} onChange={setActive} onLoad={(project) => { setActive(savedToProject(project)); setView('forge'); setToast('Saved project opened.'); }} onDelete={(id) => { if (window.confirm('Delete this saved project from the browser?')) setWorkspace((current) => ({ ...current, saved: current.saved.filter((project) => project.id !== id) })); }} onSave={saveProject} onNew={newProject} onExportProject={() => { downloadProject(workspace.active); setToast('Portable project exported.'); }} onImportProject={(file) => { void importProject(file); }} />}
-        {view === 'launch' && <LaunchView validation={validation} economics={workspace.economics} checklist={workspace.launch} onEconomics={(economics) => setWorkspace((current) => ({ ...current, economics }))} onChecklist={(launch) => setWorkspace((current) => ({ ...current, launch }))} />}
+        {view === 'launch' && <LaunchView validation={validation} checklist={workspace.launch} onChecklist={(launch) => setWorkspace((current) => ({ ...current, launch }))} />}
       </main>
       {toast !== '' && <div className="toast" role="status"><Icon name="check" size={17} /><span>{toast}</span><button aria-label="Dismiss notification" onClick={() => setToast('')}><Icon name="x" size={15} /></button></div>}
     </div>

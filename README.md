@@ -4,124 +4,136 @@
 
 <h1 align="center">FormMint</h1>
 
-<p align="center"><strong>Design an original rigid avatar accessory starting mesh before spending Robux on an upload.</strong></p>
+<p align="center"><strong>Private model preflight for Roblox rigid accessories.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/RepoEnjoyer/Roblox-UGC/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/RepoEnjoyer/Roblox-UGC/actions/workflows/ci.yml/badge.svg"></a>
-  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-7457d4.svg"></a>
-  <img alt="Local first" src="https://img.shields.io/badge/data-local--first-169578.svg">
-  <img alt="No API key" src="https://img.shields.io/badge/API_key-not%20needed-ef7458.svg">
+  <a href="https://github.com/RepoEnjoyer/FormMint/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/RepoEnjoyer/FormMint/actions/workflows/ci.yml/badge.svg"></a>
+  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-8d7cff.svg"></a>
+  <img alt="Local first" src="https://img.shields.io/badge/data-local--first-65cdae.svg">
+  <img alt="No API key" src="https://img.shields.io/badge/API_key-not%20needed-c9e85b.svg">
 </p>
 
-FormMint is a local-first browser workbench for creators learning the rigid accessory workflow. It combines a procedural 3D forge, live geometry checks, project briefs, reference-sheet prompts, listing starters, an editable Robux checkpoint, and a final production checklist.
+FormMint inspects the model you actually intend to finish. Drop in a GLB, GLTF, or OBJ file to find topology, bounds, UV, material, texture, skinning, and complexity problems before opening Roblox Studio or paying an upload fee.
 
-It produces a real merged `.glb` or `.obj` starting mesh. It does not pretend that a browser can replace Blender, Roblox Studio, moderation, market research, or good taste.
+It can create a reversible prepared copy by merging render meshes, removing zero-area triangles, rebuilding normals, recentering geometry, stripping rigid-incompatible attributes, and scaling oversized models down to the selected planning boundary. It never claims that a browser check guarantees Marketplace acceptance.
 
-![Illustrated FormMint forge preview](docs/preview.svg)
+<p align="center"><a href="https://repoenjoyer.github.io/FormMint/"><strong>Open the local-first web app →</strong></a></p>
 
-> The preview is illustrative. Every control and panel shown represents implemented functionality.
+![FormMint imported-model preflight workspace](docs/preview.svg)
 
-## What it does
+> The interface is local-first and contains no analytics, account system, Marketplace credentials, or application network client. Roblox Studio and current official validation remain authoritative.
 
-- **Live procedural modelling:** Shape Crown, Halo, Orbit, and Horn silhouettes with useful limits.
-- **Interactive 3D fit preview:** Orbit, zoom, pan, inspect the mannequin proxy, and show the selected Hat boundary.
-- **Real geometry validation:** Check triangle count, physical dimensions, UV presence, and exposed geometric edges.
-- **Single-mesh export:** Every generated component is merged into one export mesh object.
-- **Local files:** Export binary GLB, OBJ, PNG previews, and portable FormMint project files.
-- **Concept lab:** Turn a specific brief into a constrained multi-view reference prompt without calling an AI service.
-- **Listing starter:** Generate short, natural title options and a description foundation.
-- **Project shelf:** Save up to 100 variations in the current browser.
-- **Robux checkpoint:** Edit current fees, price, commission, and rebate assumptions before estimating recovery.
-- **Launch desk:** Track originality, Blender cleanup, Studio import, AFT fitting, avatar tests, Marketplace settings, thumbnail, and listing checks.
-- **Private by default:** No account, analytics, advertising, telemetry, marketplace scraping, or application network client.
+## Why it is useful
 
-## The easiest useful workflow
+- **Inspect real files:** Load GLB, GLTF, or OBJ candidates and related local textures.
+- **See failures:** Display open, non-manifold, and collapsed topology directly over the model.
+- **Get an actionable report:** Review blockers, warnings, measurements, and specific next actions.
+- **Prepare a safe copy:** Keep the imported source untouched while FormMint creates a separate cleaned candidate.
+- **Check the final direction:** Measure triangle count, mesh count, connected shells, bounds, origin offset, UV presence, normals, vertex colors, skinning, materials, and detected texture sizes.
+- **Export locally:** Download a prepared GLB, a privacy-safe JSON audit, and a viewport PNG.
+- **Start from a blockout when needed:** The secondary Blockout Lab still creates four editable procedural starting shapes.
+- **Keep a portable work packet:** Save design notes and blockout parameters without an account.
 
-1. Open **Concept** and describe one clear audience, aesthetic, palette, and silhouette difference.
-2. Search the Marketplace yourself. If a recognizable existing item looks close, change the structure before modelling.
-3. Open **Forge**, choose a silhouette family, and adjust it until the geometry gate has no failures.
-4. Save promising variations, then export the strongest one as GLB.
-5. Open the GLB in Blender. Improve proportions, resolve intersections when needed, optimize UVs, texture it, apply transforms, and confirm the final mesh is clean.
-6. Import the finished `.gltf` or `.fbx` through Studio's 3D Importer.
-7. Use the Accessory Fitting Tool to select the correct category, position it, test several bodies and animations, and generate the Accessory.
-8. Complete the Launch checklist and confirm current official fees before submitting.
+## Fastest workflow
 
-Read the detailed [Blender-to-Studio workflow](docs/blender-studio-workflow.md).
+1. Open **Inspect** and select one model plus any related local texture files.
+2. Read the blockers first. Select topology findings to show their problem lines in the viewport.
+3. Switch the Hat planning boundary and confirm the model is proportioned for the intended body scale.
+4. Select **Prepare reversible copy** to apply the safe, documented transformations.
+5. Export the prepared GLB and preflight report.
+6. Finish artistic topology, UVs, textures, intersections, and intentional disconnected shells in Blender.
+7. Import the final candidate with Studio's current 3D Importer.
+8. Convert it with the Accessory Fitting Tool, test multiple bodies, and run Roblox's current UGC validation before uploading.
 
-## Current rules built into the gate
+Studio's importer supports FBX and glTF assets and performs its own error checking. FormMint exports GLB, the binary glTF form. See Roblox's official [import guide](https://create.roblox.com/docs/art/accessories/creating-rigid/importing) and [UGC validation documentation](https://create.roblox.com/docs/marketplace/validation-system).
 
-The values below were verified against Roblox Creator Hub on **July 17, 2026**:
+## Checks performed
 
-- Rigid accessories must be one mesh and cannot exceed 4,000 triangles.
-- Geometry must be watertight without exposed holes or backfaces.
-- Hat limits are 1.87 × 2.5 × 1.87 studs for Normal, 3 × 4 × 3 for Classic, and 1.78 × 2.5 × 1.78 for Slender.
-- Marketplace textures cannot exceed 2048 × 2048.
-- The final Accessory should use Plastic, Transparency `0`, default VertexColor, and no extraneous scripts or parts.
-- The Accessory Fitting Tool creates the appropriate attachment for a rigid accessory. Third-party attachment import is not supported for rigid accessories.
+| Area | Local check |
+| --- | --- |
+| Scene | Render mesh count and rigid-accessory skinning conflicts |
+| Complexity | Triangle and vertex counts with a 4,000-triangle rigid-accessory gate |
+| Dimensions | Width, height, depth, origin offset, and selected Hat planning boundary |
+| Topology | Open edges, edges shared by more than two faces, zero-area triangles, and disconnected components |
+| Surface data | UV and normal presence, vertex colors, materials, detected textures, and maximum detected texture dimension |
+| Presentation | Interactive orbit, wireframe mode, boundary box, issue overlays, and PNG capture |
 
-Rules change. FormMint links directly to the official [rigid accessory specifications](https://create.roblox.com/docs/avatar/rigid-accessories/specifications), [import guide](https://create.roblox.com/docs/avatar/rigid-accessories/import), and [Marketplace policy](https://create.roblox.com/docs/marketplace/marketplace-policy). Studio and the current official documentation are always the final authority.
+The edge scan pairs quantized geometric positions so ordinary UV seams do not look like holes. It is still not a complete solid-modelling proof and does not detect every self-intersection.
 
-## Robux assumptions
+## Safe preparation
 
-As verified on July 17, 2026, Roblox documents an 80 Robux upload fee per 2D or 3D Marketplace submission and a 1,500 Robux non-limited publishing advance for Hat items. Publishing also requires the currently listed identity, security, and membership conditions. Upload fees are generally not refunded after rejection.
+Preparation is deliberately conservative:
 
-FormMint starts the calculator with those Hat values, but every number is editable. The estimate is not a promise of sales or profit. It excludes demand, moderation risk, taxes, escrow timing, price-floor changes, and future policy changes. Confirm the [current fees and commissions](https://create.roblox.com/docs/marketplace/marketplace-fees-and-commissions) immediately before publishing.
+- bakes object transforms into a generated copy;
+- removes detected zero-area triangles;
+- merges render meshes into one object;
+- preserves UVs only when every source render mesh has them;
+- removes vertex colors and skinning attributes from the rigid prepared copy;
+- welds exact duplicate vertices while respecting retained attributes;
+- rebuilds vertex normals;
+- recenters the copy at the scene origin; and
+- uniformly scales down only when the selected planning boundary is exceeded.
+
+FormMint does **not** automatically decimate, boolean-union disconnected shells, invent UVs, repair arbitrary holes, or overwrite the imported source. Those operations can damage a model and remain explicit Blender work.
+
+## Supported imports and safety limits
+
+- Select exactly one `.glb`, `.gltf`, or `.obj` model at a time.
+- Related textures and external GLTF resources can be selected alongside the model.
+- Imports are limited to 64 MiB and 64 related files.
+- Browser inspection stops above 500,000 vertices or 750,000 triangles.
+- External dependencies are resolved only from the files the user selected; FormMint does not retrieve missing model resources from the internet.
+- OBJ material libraries are not interpreted in this release. Use GLB when material fidelity matters.
 
 ## Quick start
 
 Requirements: [Node.js](https://nodejs.org/) 20.19 or newer and npm.
 
 ```bash
-git clone https://github.com/RepoEnjoyer/Roblox-UGC.git
-cd Roblox-UGC
+git clone https://github.com/RepoEnjoyer/FormMint.git
+cd FormMint
 npm ci
 npm run dev
 ```
 
-Open the local address shown by Vite.
-
 For a production build:
 
 ```bash
-npm run build
+npm run check
 npm run preview
 ```
-
-The static output is written to `dist/`. The relative asset base supports normal static hosting and subdirectory deployments.
 
 ## Commands
 
 | Command | Purpose |
 | --- | --- |
-| `npm run dev` | Start the local development server |
-| `npm run typecheck` | Run strict TypeScript checks |
+| `npm run dev` | Start the local Vite server |
 | `npm run lint` | Check source and configuration files |
+| `npm run typecheck` | Run strict TypeScript checks |
 | `npm test` | Run the Vitest suite once |
-| `npm run build` | Type-check and create a production bundle |
+| `npm run build` | Create the production bundle |
 | `npm run check` | Run lint, types, tests, and build together |
+
+## Privacy
+
+Model processing happens in browser memory. Imported files are not placed in local storage, uploaded, analyzed remotely, or included in exported reports. Preflight reports intentionally exclude source filenames, file paths, user identity, and device information.
+
+The browser workspace stores only project notes, procedural blockout parameters, and checklist state. Exported project JSON is readable and not encrypted. See [PRIVACY.md](PRIVACY.md) and [SECURITY.md](SECURITY.md).
 
 ## Important limitations
 
-- FormMint outputs a **starting mesh**, not a guaranteed Marketplace-ready product.
-- Generated components are merged into one mesh object but may intersect. Inspect and clean the result in Blender.
-- Primitive UVs are retained but are not an artist-finished texture layout.
-- The mannequin and boundary are planning aids. The Studio Accessory Fitting Tool is the fit authority.
-- FormMint does not create layered clothing, body bundles, dynamic heads, attachments, PBR textures, or direct Marketplace uploads.
-- It does not search trends or claim that an item will sell.
-- Browser storage is not encrypted and stays with the current browser profile.
-
-## Privacy and intellectual property
-
-Projects remain in browser local storage unless you export them. FormMint contains no runtime request to Roblox, an AI provider, or any analytics service. Opening an official documentation link is an explicit user action.
-
-The prompt builder forbids brands, logos, copyrighted characters, and close copies, but text cannot guarantee originality. You remain responsible for Marketplace searches, ownership, commercial-use rights, moderation compliance, and substantial creative work. See [PRIVACY.md](PRIVACY.md) and [SECURITY.md](SECURITY.md).
-
-FormMint is an independent tool and is not endorsed by or affiliated with Roblox Corporation. Roblox and related marks belong to their respective owner.
+- FormMint is a planning and preparation tool, not Roblox's validator.
+- A browser cannot prove moderation acceptance, ownership, originality, fit quality, or sales.
+- Prepared meshes may still contain holes, self-intersections, intentional or accidental disconnected shells, poor UV layouts, weak topology, or undesirable shading.
+- The Hat boundary is a planning aid. Studio's Accessory Fitting Tool is the fit authority.
+- FBX import and export are not included; use GLB/GLTF or Blender for conversion.
+- Imported models and prepared copies live only for the current page session unless exported.
+- The procedural Blockout Lab produces starting geometry, not finished Marketplace assets.
 
 ## Documentation
 
-- [Blender and Studio workflow](docs/blender-studio-workflow.md)
 - [Technical and trust boundaries](docs/technical-boundaries.md)
+- [Blender and Studio workflow](docs/blender-studio-workflow.md)
 - [Roadmap](ROADMAP.md)
 - [Contributing](CONTRIBUTING.md)
 - [Security policy](SECURITY.md)

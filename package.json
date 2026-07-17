@@ -1,9 +1,9 @@
 {
   "name": "formmint",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
-  "description": "A local-first procedural workbench for designing and validating original rigid avatar accessories.",
+  "description": "A local-first preflight and preparation workbench for Roblox rigid accessory models.",
   "author": "RepoEnjoyer",
   "license": "MIT",
   "scripts": {

@@ -1,32 +1,36 @@
 # Roadmap
 
-FormMint 1.0 solves the blank-canvas problem for rigid Hat accessories while keeping Blender and Studio in the workflow.
+FormMint 2.0 is an import-first, local accessory preflight. Roadmap work must deepen real production value rather than add generic content generators.
 
-## Near term
+## Next
 
-- Add more original procedural families, beginning with antenna clusters and structured headbands.
-- Add a symmetry toggle and per-family advanced controls without exposing unsafe geometry ranges.
-- Add a lightweight UV-island preview and texture resolution checker.
-- Add an optional final-file inspector for GLB and OBJ imports after Blender editing.
-- Add browser-level accessibility tests for navigation, project saving, and exports.
-- Add a print-friendly pre-upload report containing the brief, geometry metrics, and checklist.
+- Add UV-island visualization, out-of-range UV detection, and texture-resolution details per material.
+- Add face-orientation and normal-direction overlays.
+- Add an optional offline thumbnail scene with lighting, camera, background, and transparent PNG presets.
+- Add a local work-packet ZIP containing the prepared GLB, audit, preview, and project notes.
+- Add browser end-to-end coverage for imports, findings, safe preparation, exports, keyboard navigation, and mobile layouts.
+- Generate README screenshots from the tested application during release preparation.
+
+## Blender companion
+
+- Audit the selected Blender object using the same finding vocabulary.
+- Display Roblox category planning bounds in the Blender viewport.
+- Create a duplicate working copy before cleanup actions.
+- Apply transforms, merge selected render meshes, find non-manifold geometry, and expose safe export presets.
+- Add headless tests for pure Python rules and fixture-based manual Studio verification.
 
 ## Later
 
-- Add a local texture-painting workspace that exports a conventional color map.
-- Add a collection board for coordinated variants without duplicating near-identical Marketplace items blindly.
-- Add an offline thumbnail scene with controlled lighting and transparent PNG export.
-- Evaluate a local-only boolean union worker after reliability and performance testing.
-- Add Face, Neck, Shoulder, Front, Back, and Waist boundary modes with category-specific guidance.
+- Evaluate a local WASM boolean-union worker only after topology and memory reliability testing.
+- Add Face, Neck, Shoulder, Front, Back, and Waist planning modes using freshly verified official specifications.
+- Add non-destructive triangle-reduction previews that preserve UVs and never silently replace the source.
+- Add user-controlled local collection packaging for coordinated variants.
 
 ## Explicitly out of scope
 
-- Automatic Marketplace uploads or handling user credentials
-- Claims that an item will pass moderation or make Robux
-- Marketplace scraping, automated copying, or trend-cloning workflows
-- Generation of brands, copyrighted characters, platform logos, or other creators' designs
-- Paid APIs required for the core workflow
-- Engagement spam, mass-upload automation, or fee-burning quantity strategies
-- Layered clothing or avatar bodies presented as supported before their full technical requirements are implemented
-
-Roadmap entries are proposals, not promises. Feature requests should explain the creator workflow, technical boundary, and effect on originality.
+- Marketplace credentials or automatic uploads
+- Acceptance, moderation, originality, demand, or profit guarantees
+- Marketplace scraping, copied designs, trend cloning, and mass-upload automation
+- Paid services required for core use
+- Destructive automatic decimation, hole filling, or boolean repair without a preview and retained source
+- Generic AI prompts, listing filler, fake scores, or unverifiable pass claims
