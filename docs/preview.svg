@@ -1,115 +1,249 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="860" viewBox="0 0 1440 860" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="960" viewBox="0 0 1600 960" role="img" aria-labelledby="title desc">
   <title id="title">FormMint procedural accessory forge</title>
-  <desc id="desc">A polished three-column interface with modelling controls, a large crown preview, and live geometry validation.</desc>
+  <desc id="desc">A sleek dark creator workbench with procedural controls, a large interactive crown preview, and a live geometry readiness panel.</desc>
+
   <defs>
-    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eeede7"/><stop offset="1" stop-color="#e6e4dc"/></linearGradient>
-    <linearGradient id="crown" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#edff79"/><stop offset=".5" stop-color="#c2ef4b"/><stop offset="1" stop-color="#7960dc"/></linearGradient>
-    <radialGradient id="glow"><stop stop-color="#aa8cff" stop-opacity=".26"/><stop offset="1" stop-color="#1a1620" stop-opacity="0"/></radialGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#211b27" flood-opacity=".13"/></filter>
-    <filter id="soft"><feGaussianBlur stdDeviation="9"/></filter>
+    <linearGradient id="backdrop" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#0b0e14"/>
+      <stop offset=".55" stop-color="#10151e"/>
+      <stop offset="1" stop-color="#080a0f"/>
+    </linearGradient>
+    <linearGradient id="frame" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#121821"/>
+      <stop offset="1" stop-color="#0c1017"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#151b25"/>
+      <stop offset="1" stop-color="#10151d"/>
+    </linearGradient>
+    <linearGradient id="crown" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#e8ff92"/>
+      <stop offset=".42" stop-color="#c5ed58"/>
+      <stop offset=".72" stop-color="#82dca1"/>
+      <stop offset="1" stop-color="#8d7cff"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#c7f15b"/>
+      <stop offset=".48" stop-color="#6be8c7"/>
+      <stop offset="1" stop-color="#8e7dff"/>
+    </linearGradient>
+    <radialGradient id="viewportGlow">
+      <stop stop-color="#7b68f4" stop-opacity=".26"/>
+      <stop offset=".48" stop-color="#67d8bd" stop-opacity=".09"/>
+      <stop offset="1" stop-color="#090c12" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pageGlow">
+      <stop stop-color="#7a68f1" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#0b0e14" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="frameShadow" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="34" stdDeviation="38" flood-color="#000" flood-opacity=".48"/>
+    </filter>
+    <filter id="objectShadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="24" stdDeviation="22" flood-color="#68dec1" flood-opacity=".16"/>
+    </filter>
+    <filter id="softBlur"><feGaussianBlur stdDeviation="28"/></filter>
+    <clipPath id="appClip"><rect x="54" y="48" width="1492" height="864" rx="28"/></clipPath>
   </defs>
-  <rect width="1440" height="860" fill="url(#page)"/>
-  <rect x="30" y="28" width="1380" height="804" rx="24" fill="#f7f6f1" filter="url(#shadow)"/>
 
-  <rect x="30" y="28" width="1380" height="72" rx="24" fill="#f7f6f1"/>
-  <rect x="30" y="78" width="1380" height="22" fill="#f7f6f1"/>
-  <line x1="30" y1="100" x2="1410" y2="100" stroke="#dedbd4"/>
-  <rect x="54" y="43" width="42" height="42" rx="13" fill="#19151f"/>
-  <path d="m65 59 10-6 10 6v11l-10 6-10-6Z" fill="none" stroke="#ddff62" stroke-width="2.5"/><path d="m65 59 10 6 10-6M75 65v11" fill="none" stroke="#ff795c" stroke-width="2.5"/>
-  <text x="108" y="61" fill="#201c25" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="750">FormMint</text>
-  <text x="108" y="78" fill="#868089" font-family="Inter,system-ui,sans-serif" font-size="10" font-weight="600">Accessory workbench</text>
+  <rect width="1600" height="960" fill="url(#backdrop)"/>
+  <circle cx="230" cy="70" r="330" fill="url(#pageGlow)"/>
+  <circle cx="1430" cy="870" r="360" fill="url(#pageGlow)" opacity=".55"/>
+  <path d="M0 795C275 726 482 858 746 811c279-50 497-158 854-62v211H0Z" fill="#111723" opacity=".52"/>
 
-  <g font-family="Inter,system-ui,sans-serif">
-    <rect x="531" y="42" width="106" height="44" rx="12" fill="#19151f"/>
-    <path d="m550 56 8-4 8 4-8 4Zm0 0v10l8 4 8-4V56m-8 4v10" fill="none" stroke="#ddff62" stroke-width="1.6"/>
-    <text x="575" y="61" fill="#fff" font-size="12" font-weight="700">Forge</text><text x="575" y="74" fill="#9e98a4" font-size="8">Shape and export</text>
-    <rect x="646" y="42" width="112" height="44" rx="12" fill="transparent"/>
-    <path d="m665 51 1.3 3.7 3.7 1.3-3.7 1.3L665 61l-1.3-3.7-3.7-1.3 3.7-1.3Z" fill="none" stroke="#847e89" stroke-width="1.5"/>
-    <text x="684" y="61" fill="#39343d" font-size="12" font-weight="700">Concept</text><text x="684" y="74" fill="#9e98a4" font-size="8">Brief and prompt</text>
-    <rect x="765" y="42" width="112" height="44" rx="12" fill="transparent"/>
-    <path d="m784 51-6 2v5c0 4 2.5 6 6 7 3.5-1 6-3 6-7v-5Z" fill="none" stroke="#847e89" stroke-width="1.5"/>
-    <text x="803" y="61" fill="#39343d" font-size="12" font-weight="700">Launch</text><text x="803" y="74" fill="#9e98a4" font-size="8">Validate and price</text>
-    <rect x="1270" y="44" width="112" height="40" rx="11" fill="#fff" stroke="#d8d4cd"/>
-    <path d="M1287 53h10l2 2v16h-12Zm3 0v6h6v-6m-6 18v-7h6v7" fill="none" stroke="#645d68" stroke-width="1.4"/>
-    <text x="1307" y="68" fill="#3c3740" font-size="10" font-weight="750">Save project</text>
-  </g>
+  <rect x="54" y="48" width="1492" height="864" rx="28" fill="url(#frame)" stroke="#2b3442" stroke-width="1.5" filter="url(#frameShadow)"/>
 
-  <rect x="30" y="100" width="303" height="732" fill="#f7f6f1"/>
-  <line x1="333" y1="100" x2="333" y2="832" stroke="#dedbd4"/>
-  <g font-family="Inter,system-ui,sans-serif">
-    <text x="54" y="135" fill="#7657d8" font-size="9" font-weight="800" letter-spacing="1.3">PROCEDURAL STARTING MESH</text>
-    <text x="54" y="159" fill="#242027" font-size="19" font-weight="750">Shape controls</text>
-    <path d="M293 130h14m-14 8h14m-14 8h14" stroke="#9b949e" stroke-width="1.5"/>
-    <text x="54" y="194" fill="#625c65" font-size="9" font-weight="700">PROJECT NAME</text>
-    <rect x="54" y="203" width="255" height="39" rx="9" fill="#fff" stroke="#d8d4cd"/><text x="66" y="227" fill="#2b2730" font-size="11">Citrus Signal Crown</text>
-    <text x="54" y="271" fill="#625c65" font-size="9" font-weight="700">SILHOUETTE FAMILY</text>
-    <rect x="54" y="282" width="122" height="92" rx="11" fill="#f8f5ff" stroke="#8262e7" stroke-width="1.5"/>
-    <ellipse cx="79" cy="307" rx="15" ry="5" fill="none" stroke="#ff795c" stroke-width="2"/><path d="m69 307 5-15 5 15 6-18 5 18" fill="none" stroke="#987aff" stroke-width="2"/>
-    <text x="66" y="336" fill="#302b33" font-size="10" font-weight="700">Crown array</text><text x="66" y="352" fill="#8a848d" font-size="7.5">Ring-and-spire shape</text>
-    <rect x="187" y="282" width="122" height="92" rx="11" fill="#fff" stroke="#dedad3"/>
-    <ellipse cx="213" cy="305" rx="16" ry="7" fill="none" stroke="#8e74eb" stroke-width="2.5"/><path d="M213 294v11" stroke="#ddff62" stroke-width="2"/>
-    <text x="199" y="336" fill="#302b33" font-size="10" font-weight="700">Signal halo</text><text x="199" y="352" fill="#8a848d" font-size="7.5">Floating signal fins</text>
-    <line x1="54" y1="399" x2="309" y2="399" stroke="#e1ded7"/>
-    <text x="54" y="425" fill="#302b33" font-size="11" font-weight="750">Proportions</text><text x="280" y="425" fill="#9c969f" font-size="8">STUDS</text>
-    <text x="54" y="454" fill="#6e6871" font-size="9">Radius</text><rect x="275" y="441" width="34" height="20" rx="6" fill="#e9e6df"/><text x="284" y="455" fill="#5c565f" font-size="8">0.70</text>
-    <rect x="54" y="471" width="255" height="4" rx="2" fill="#d9d5cd"/><rect x="54" y="471" width="103" height="4" rx="2" fill="#7759dc"/><circle cx="157" cy="473" r="6" fill="#fff" stroke="#7759dc" stroke-width="2"/>
-    <text x="54" y="507" fill="#6e6871" font-size="9">Thickness</text><rect x="275" y="494" width="34" height="20" rx="6" fill="#e9e6df"/><text x="283" y="508" fill="#5c565f" font-size="8">0.085</text>
-    <rect x="54" y="524" width="255" height="4" rx="2" fill="#d9d5cd"/><rect x="54" y="524" width="69" height="4" rx="2" fill="#7759dc"/><circle cx="123" cy="526" r="6" fill="#fff" stroke="#7759dc" stroke-width="2"/>
-    <text x="54" y="560" fill="#6e6871" font-size="9">Spire height</text><rect x="275" y="547" width="34" height="20" rx="6" fill="#e9e6df"/><text x="284" y="561" fill="#5c565f" font-size="8">0.46</text>
-    <rect x="54" y="577" width="255" height="4" rx="2" fill="#d9d5cd"/><rect x="54" y="577" width="79" height="4" rx="2" fill="#7759dc"/><circle cx="133" cy="579" r="6" fill="#fff" stroke="#7759dc" stroke-width="2"/>
-    <line x1="54" y1="608" x2="309" y2="608" stroke="#e1ded7"/>
-    <text x="54" y="636" fill="#302b33" font-size="11" font-weight="750">Preview material</text>
-    <text x="54" y="668" fill="#6e6871" font-size="9">Base color</text><circle cx="283" cy="665" r="14" fill="#ddff62" stroke="#cbc7bf"/><text x="54" y="706" fill="#6e6871" font-size="9">Roughness</text><rect x="54" y="719" width="255" height="4" rx="2" fill="#d9d5cd"/><rect x="54" y="719" width="96" height="4" rx="2" fill="#7759dc"/><circle cx="150" cy="721" r="6" fill="#fff" stroke="#7759dc" stroke-width="2"/>
-  </g>
+  <g clip-path="url(#appClip)" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+    <!-- Application header -->
+    <rect x="54" y="48" width="1492" height="86" fill="#111721"/>
+    <line x1="54" y1="134" x2="1546" y2="134" stroke="#293241"/>
 
-  <rect x="333" y="100" width="730" height="732" fill="#121018"/>
-  <rect x="333" y="100" width="730" height="54" fill="#211c27"/>
-  <line x1="333" y1="154" x2="1063" y2="154" stroke="#322c39"/>
-  <circle cx="356" cy="127" r="4" fill="#58d6b6"/><text x="368" y="131" fill="#fff" font-family="Inter,system-ui,sans-serif" font-size="10" font-weight="700">Geometry gate passed</text>
-  <rect x="878" y="118" width="29" height="17" rx="9" fill="#7759dc"/><circle cx="897" cy="126.5" r="5.5" fill="#fff"/><text x="918" y="130" fill="#aaa3af" font-family="Inter,system-ui,sans-serif" font-size="8.5">Show Hat boundary</text>
-  <circle cx="700" cy="432" r="280" fill="url(#glow)"/>
-  <ellipse cx="698" cy="646" rx="260" ry="32" fill="#0b0a0f" opacity=".52" filter="url(#soft)"/>
-  <ellipse cx="698" cy="504" rx="120" ry="98" fill="#37323d"/><path d="M575 601Q698 542 821 601v95H575Z" fill="#312c36"/>
-  <g fill="url(#crown)" stroke="#f5ffae" stroke-width="2">
-    <path d="M560 420 591 284l40 119 48-154 43 154 48-119 31 136-37 46H598Z"/>
-    <ellipse cx="681" cy="424" rx="122" ry="45" fill="#cbee55"/>
-    <ellipse cx="681" cy="420" rx="100" ry="29" fill="#18151e" stroke="#7e68d7" stroke-width="5"/>
-  </g>
-  <g fill="#ffffff">
-    <circle cx="591" cy="284" r="6"/><circle cx="679" cy="249" r="7"/><circle cx="770" cy="284" r="6"/>
-  </g>
-  <g fill="none" stroke="#ff795c" stroke-width="1.2" stroke-dasharray="7 6" opacity=".75">
-    <rect x="493" y="228" width="376" height="385"/>
-  </g>
-  <rect x="352" y="171" width="144" height="29" rx="8" fill="#1d1923" stroke="#39323f"/><path d="m367 179 6-3 6 3v7l-6 3-6-3Z" fill="none" stroke="#b7b0bd" stroke-width="1"/><text x="386" y="189" fill="#bdb6c2" font-family="Inter,system-ui,sans-serif" font-size="8.5" font-weight="700">One merged export mesh</text>
-  <text x="626" y="801" fill="#7f7886" font-family="Inter,system-ui,sans-serif" font-size="8" letter-spacing=".8">DRAG TO ORBIT   ·   SCROLL TO ZOOM   ·   RIGHT-DRAG TO PAN</text>
+    <rect x="82" y="69" width="44" height="44" rx="13" fill="#0b0f15" stroke="#303a48"/>
+    <path d="m94 82 10-6 10 6v12l-10 6-10-6Z" fill="none" stroke="#c9f15b" stroke-width="2"/>
+    <path d="m94 82 10 6 10-6M104 88v12" fill="none" stroke="#6ce4c5" stroke-width="2"/>
+    <text x="140" y="87" fill="#f6f8fb" font-size="18" font-weight="760" letter-spacing="-.4">FormMint</text>
+    <text x="140" y="105" fill="#798596" font-size="10" font-weight="620">LOCAL ACCESSORY WORKBENCH</text>
 
-  <rect x="1063" y="100" width="347" height="732" fill="#f7f6f1"/>
-  <line x1="1063" y1="100" x2="1063" y2="832" stroke="#dedbd4"/>
-  <g font-family="Inter,system-ui,sans-serif">
-    <text x="1087" y="135" fill="#7657d8" font-size="9" font-weight="800" letter-spacing="1.3">LIVE GEOMETRY GATE</text><text x="1087" y="159" fill="#242027" font-size="19" font-weight="750">Readiness</text>
-    <circle cx="1364" cy="143" r="21" fill="#e5f7f1" stroke="#76d3bb" stroke-width="3"/><text x="1352" y="147" fill="#18725c" font-size="10" font-weight="800">5/6</text>
-    <rect x="1087" y="186" width="142" height="65" rx="10" fill="#fff" stroke="#dfdcd5"/><text x="1101" y="207" fill="#98929b" font-size="8" letter-spacing=".7">TRIANGLES</text><text x="1101" y="236" fill="#28232c" font-size="18" font-weight="750">Under 4,000</text>
-    <rect x="1233" y="186" width="153" height="65" rx="10" fill="#fff" stroke="#dfdcd5"/><text x="1247" y="207" fill="#98929b" font-size="8" letter-spacing=".7">EXPORT OBJECT</text><text x="1247" y="236" fill="#28232c" font-size="18" font-weight="750">1 mesh</text>
-    <text x="1087" y="283" fill="#625c65" font-size="9" font-weight="700">FIT TARGET</text><rect x="1087" y="292" width="299" height="39" rx="9" fill="#fff" stroke="#d8d4cd"/><text x="1101" y="316" fill="#2b2730" font-size="11">Normal Hat · 1.87 × 2.5 × 1.87</text><path d="m1362 306 6 6 6-6" fill="none" stroke="#837c86"/>
-    <g>
-      <line x1="1087" y1="355" x2="1386" y2="355" stroke="#e3e0da"/>
-      <circle cx="1101" cy="378" r="10" fill="#dff5ed"/><path d="m1096 378 3 3 6-7" fill="none" stroke="#18785f" stroke-width="1.7"/>
-      <text x="1119" y="374" fill="#302b33" font-size="10" font-weight="700">Single mesh object</text><text x="1119" y="389" fill="#8d8790" font-size="8">Every generated piece is merged for export.</text>
-      <line x1="1087" y1="407" x2="1386" y2="407" stroke="#e3e0da"/>
-      <circle cx="1101" cy="430" r="10" fill="#dff5ed"/><path d="m1096 430 3 3 6-7" fill="none" stroke="#18785f" stroke-width="1.7"/>
-      <text x="1119" y="426" fill="#302b33" font-size="10" font-weight="700">Triangle budget passed</text><text x="1119" y="441" fill="#8d8790" font-size="8">Inside the current rigid accessory limit.</text>
-      <line x1="1087" y1="459" x2="1386" y2="459" stroke="#e3e0da"/>
-      <circle cx="1101" cy="482" r="10" fill="#dff5ed"/><path d="m1096 482 3 3 6-7" fill="none" stroke="#18785f" stroke-width="1.7"/>
-      <text x="1119" y="478" fill="#302b33" font-size="10" font-weight="700">Normal Hat bounds passed</text><text x="1119" y="493" fill="#8d8790" font-size="8">Width, height, and depth are within target.</text>
-      <line x1="1087" y1="511" x2="1386" y2="511" stroke="#e3e0da"/>
-      <circle cx="1101" cy="534" r="10" fill="#fff0d9"/><path d="M1101 528v7m0 4h.1" stroke="#a66d16" stroke-width="1.5"/>
-      <text x="1119" y="530" fill="#302b33" font-size="10" font-weight="700">Studio validation still required</text><text x="1119" y="545" fill="#8d8790" font-size="8">Use the 3D Importer and AFT before uploading.</text>
+    <rect x="579" y="67" width="441" height="48" rx="15" fill="#0c1118" stroke="#2a3442"/>
+    <rect x="586" y="74" width="136" height="34" rx="10" fill="#202838"/>
+    <circle cx="607" cy="91" r="5" fill="#c8ef5b"/>
+    <text x="621" y="95" fill="#f7f9fb" font-size="12" font-weight="720">Forge</text>
+    <circle cx="755" cy="91" r="5" fill="#566172"/>
+    <text x="769" y="95" fill="#a2adbb" font-size="12" font-weight="650">Concept</text>
+    <circle cx="895" cy="91" r="5" fill="#566172"/>
+    <text x="909" y="95" fill="#a2adbb" font-size="12" font-weight="650">Launch</text>
+
+    <circle cx="1300" cy="91" r="4" fill="#68e2c2"/>
+    <text x="1312" y="95" fill="#95a2b2" font-size="10" font-weight="650">SAVED LOCALLY</text>
+    <rect x="1413" y="70" width="104" height="42" rx="12" fill="#c9f15b"/>
+    <path d="M1432 81h12l3 3v16h-15Zm3 0v7h8v-7m-8 19v-8h9v8" fill="none" stroke="#11161d" stroke-width="1.5"/>
+    <text x="1455" y="96" fill="#11161d" font-size="11" font-weight="800">Save</text>
+
+    <!-- Left control rail -->
+    <rect x="54" y="134" width="314" height="778" fill="url(#panel)"/>
+    <line x1="368" y1="134" x2="368" y2="912" stroke="#293241"/>
+
+    <text x="82" y="172" fill="#8290a2" font-size="9" font-weight="760" letter-spacing="1.7">PROCEDURAL MESH</text>
+    <text x="82" y="202" fill="#f5f7fa" font-size="24" font-weight="760" letter-spacing="-.7">Shape controls</text>
+    <rect x="324" y="169" width="20" height="20" rx="6" fill="#202938"/>
+    <path d="M329 175h10m-10 4h10m-10 4h10" stroke="#8b97a7" stroke-width="1.4"/>
+
+    <text x="82" y="236" fill="#7f8a99" font-size="9" font-weight="720">PROJECT NAME</text>
+    <rect x="82" y="247" width="258" height="42" rx="11" fill="#0c1118" stroke="#323c4b"/>
+    <text x="97" y="273" fill="#dbe0e7" font-size="12" font-weight="580">Citrus Signal Crown</text>
+
+    <text x="82" y="321" fill="#7f8a99" font-size="9" font-weight="720">QUICK PRESET</text>
+    <rect x="82" y="332" width="258" height="42" rx="11" fill="#111823" stroke="#323c4b"/>
+    <text x="97" y="358" fill="#dbe0e7" font-size="11" font-weight="620">Orbit Crown · Clean</text>
+    <path d="m318 348 5 5 5-5" fill="none" stroke="#778597" stroke-width="1.5"/>
+
+    <text x="82" y="409" fill="#7f8a99" font-size="9" font-weight="720">SILHOUETTE</text>
+    <rect x="82" y="420" width="124" height="76" rx="12" fill="#1b2330" stroke="#87a93f"/>
+    <path d="M101 453h24l-4-15-7 11-6-14-7 18Z" fill="none" stroke="#c9f15b" stroke-width="1.8"/>
+    <text x="136" y="448" fill="#f1f4f7" font-size="10" font-weight="720">Crown</text>
+    <text x="136" y="464" fill="#8592a3" font-size="8">Ring + spires</text>
+    <rect x="216" y="420" width="124" height="76" rx="12" fill="#0d1219" stroke="#2c3644"/>
+    <ellipse cx="239" cy="452" rx="13" ry="6" fill="none" stroke="#8e7dff" stroke-width="1.8"/>
+    <text x="264" y="448" fill="#ced4dc" font-size="10" font-weight="700">Halo</text>
+    <text x="264" y="464" fill="#758192" font-size="8">Signal fins</text>
+
+    <line x1="82" y1="523" x2="340" y2="523" stroke="#293241"/>
+    <text x="82" y="554" fill="#f0f3f7" font-size="12" font-weight="720">Proportions</text>
+    <text x="310" y="554" fill="#667385" font-size="8" font-weight="720">STUDS</text>
+
+    <text x="82" y="586" fill="#9ba6b4" font-size="10">Radius</text>
+    <rect x="292" y="569" width="48" height="24" rx="7" fill="#202937"/>
+    <text x="304" y="586" fill="#d8dde4" font-size="9" font-weight="700">0.70</text>
+    <rect x="82" y="605" width="258" height="4" rx="2" fill="#293241"/>
+    <rect x="82" y="605" width="126" height="4" rx="2" fill="#c9f15b"/>
+    <circle cx="208" cy="607" r="6" fill="#111721" stroke="#d8f780" stroke-width="2"/>
+
+    <text x="82" y="643" fill="#9ba6b4" font-size="10">Thickness</text>
+    <rect x="292" y="626" width="48" height="24" rx="7" fill="#202937"/>
+    <text x="301" y="643" fill="#d8dde4" font-size="9" font-weight="700">0.085</text>
+    <rect x="82" y="662" width="258" height="4" rx="2" fill="#293241"/>
+    <rect x="82" y="662" width="82" height="4" rx="2" fill="#7f70f0"/>
+    <circle cx="164" cy="664" r="6" fill="#111721" stroke="#9c8fff" stroke-width="2"/>
+
+    <text x="82" y="700" fill="#9ba6b4" font-size="10">Spire height</text>
+    <rect x="292" y="683" width="48" height="24" rx="7" fill="#202937"/>
+    <text x="303" y="700" fill="#d8dde4" font-size="9" font-weight="700">0.46</text>
+    <rect x="82" y="719" width="258" height="4" rx="2" fill="#293241"/>
+    <rect x="82" y="719" width="106" height="4" rx="2" fill="#69dfc0"/>
+    <circle cx="188" cy="721" r="6" fill="#111721" stroke="#83ebd0" stroke-width="2"/>
+
+    <line x1="82" y1="755" x2="340" y2="755" stroke="#293241"/>
+    <text x="82" y="786" fill="#f0f3f7" font-size="12" font-weight="720">Preview material</text>
+    <text x="82" y="819" fill="#9ba6b4" font-size="10">Base color</text>
+    <circle cx="319" cy="815" r="13" fill="#c9f15b" stroke="#efffb4" stroke-width="2"/>
+    <text x="82" y="855" fill="#9ba6b4" font-size="10">Roughness</text>
+    <rect x="176" y="844" width="164" height="4" rx="2" fill="#293241"/>
+    <rect x="176" y="844" width="64" height="4" rx="2" fill="#78879a"/>
+    <circle cx="240" cy="846" r="5" fill="#111721" stroke="#b6c0cb" stroke-width="1.5"/>
+
+    <!-- Center viewport -->
+    <rect x="368" y="134" width="762" height="778" fill="#090d13"/>
+    <rect x="388" y="154" width="722" height="52" rx="13" fill="#121923" stroke="#273241"/>
+    <circle cx="410" cy="180" r="5" fill="#68e3c2"/>
+    <text x="424" y="184" fill="#e8edf2" font-size="11" font-weight="720">Geometry gate passed</text>
+    <rect x="873" y="167" width="26" height="16" rx="8" fill="#c8f05a"/>
+    <circle cx="891" cy="175" r="5" fill="#10151c"/>
+    <text x="910" y="179" fill="#8f9bab" font-size="9" font-weight="600">Show Hat boundary</text>
+
+    <circle cx="752" cy="515" r="330" fill="url(#viewportGlow)"/>
+    <ellipse cx="752" cy="779" rx="236" ry="42" fill="#000" opacity=".48" filter="url(#softBlur)"/>
+
+    <g opacity=".5">
+      <path d="M407 253H1090M407 343H1090M407 433H1090M407 523H1090M407 613H1090M407 703H1090M407 793H1090" stroke="#1a2430"/>
+      <path d="M476 225V821M566 225V821M656 225V821M746 225V821M836 225V821M926 225V821M1016 225V821" stroke="#18222e"/>
     </g>
-    <rect x="1087" y="579" width="299" height="42" rx="10" fill="#ddff62"/><path d="M1110 588v13m0 0 4-4m-4 4-4-4M1103 608h14" fill="none" stroke="#19151f" stroke-width="1.5"/><text x="1185" y="604" fill="#19151f" font-size="11" font-weight="800">Export GLB</text>
-    <rect x="1087" y="630" width="145" height="39" rx="9" fill="#fff" stroke="#d8d4cd"/><text x="1149" y="654" fill="#39343d" font-size="10" font-weight="750">OBJ</text>
-    <rect x="1241" y="630" width="145" height="39" rx="9" fill="#fff" stroke="#d8d4cd"/><text x="1302" y="654" fill="#39343d" font-size="10" font-weight="750">PNG</text>
-    <rect x="1087" y="680" width="299" height="39" rx="9" fill="transparent" stroke="#d8d4cd"/><text x="1188" y="704" fill="#39343d" font-size="10" font-weight="750">Save local project</text>
-    <rect x="1087" y="747" width="299" height="56" rx="10" fill="#ece9e3"/><path d="M1105 760l-7 3v6c0 5 3 8 7 9 4-1 7-4 7-9v-6Z" fill="none" stroke="#7258d1" stroke-width="1.4"/><text x="1122" y="768" fill="#5f5962" font-size="8.5" font-weight="700">Official rules checked July 17, 2026.</text><text x="1122" y="784" fill="#918b93" font-size="7.5">Studio remains the final validator.</text>
+
+    <rect x="411" y="228" width="158" height="32" rx="9" fill="#121923" stroke="#273241"/>
+    <path d="m428 238 7-4 7 4v8l-7 4-7-4Z" fill="none" stroke="#7f8c9e" stroke-width="1.2"/>
+    <text x="451" y="248" fill="#aeb8c5" font-size="9" font-weight="670">ONE MERGED MESH</text>
+
+    <path d="M553 679C604 635 677 617 752 617s148 18 199 62v116H553Z" fill="#1c2430" stroke="#2b3543"/>
+    <ellipse cx="752" cy="567" rx="116" ry="132" fill="#242d39" stroke="#313d4c"/>
+    <ellipse cx="752" cy="565" rx="93" ry="107" fill="#202833"/>
+
+    <g filter="url(#objectShadow)">
+      <path d="M602 493 634 337l53 131 64-182 63 182 54-131 33 156-43 47H645Z" fill="url(#crown)" stroke="#eaff9b" stroke-width="2.5" stroke-linejoin="round"/>
+      <ellipse cx="752" cy="497" rx="151" ry="52" fill="url(#ring)" stroke="#f2ffbd" stroke-width="2"/>
+      <ellipse cx="752" cy="494" rx="126" ry="35" fill="#111720" stroke="#8d7cff" stroke-width="6"/>
+      <ellipse cx="752" cy="489" rx="112" ry="25" fill="#0a0e14"/>
+      <circle cx="634" cy="337" r="7" fill="#f5ffc6"/>
+      <circle cx="751" cy="286" r="8" fill="#f5ffc6"/>
+      <circle cx="868" cy="337" r="7" fill="#f5ffc6"/>
+    </g>
+
+    <rect x="564" y="274" width="376" height="353" rx="18" fill="none" stroke="#6ce4c5" stroke-opacity=".5" stroke-dasharray="7 7"/>
+    <path d="M564 294v-20h20M920 274h20v20M564 607v20h20M920 627h20v-20" fill="none" stroke="#8ff0d7" stroke-width="2" opacity=".7"/>
+
+    <rect x="612" y="842" width="281" height="36" rx="18" fill="#111822" stroke="#26313f"/>
+    <circle cx="635" cy="860" r="3" fill="#687588"/>
+    <text x="647" y="864" fill="#8390a1" font-size="9" font-weight="620">DRAG TO ORBIT</text>
+    <circle cx="741" cy="860" r="3" fill="#687588"/>
+    <text x="753" y="864" fill="#8390a1" font-size="9" font-weight="620">SCROLL TO ZOOM</text>
+
+    <!-- Right readiness rail -->
+    <rect x="1130" y="134" width="416" height="778" fill="url(#panel)"/>
+    <line x1="1130" y1="134" x2="1130" y2="912" stroke="#293241"/>
+
+    <text x="1158" y="172" fill="#8290a2" font-size="9" font-weight="760" letter-spacing="1.7">LIVE GEOMETRY GATE</text>
+    <text x="1158" y="202" fill="#f5f7fa" font-size="24" font-weight="760" letter-spacing="-.7">Ready to refine</text>
+    <circle cx="1494" cy="184" r="24" fill="#13241f" stroke="#64dfbf" stroke-width="2"/>
+    <text x="1481" y="189" fill="#78e7c8" font-size="11" font-weight="820">6/6</text>
+
+    <rect x="1158" y="231" width="171" height="76" rx="14" fill="#0d131b" stroke="#2b3543"/>
+    <text x="1174" y="253" fill="#718093" font-size="8" font-weight="720" letter-spacing="1.1">TRIANGLES</text>
+    <text x="1174" y="285" fill="#f1f4f7" font-size="22" font-weight="760">2,184</text>
+    <rect x="1337" y="231" width="181" height="76" rx="14" fill="#0d131b" stroke="#2b3543"/>
+    <text x="1353" y="253" fill="#718093" font-size="8" font-weight="720" letter-spacing="1.1">EXPORT OBJECT</text>
+    <text x="1353" y="285" fill="#f1f4f7" font-size="22" font-weight="760">1 mesh</text>
+
+    <text x="1158" y="341" fill="#7f8a99" font-size="9" font-weight="720">FIT TARGET</text>
+    <rect x="1158" y="352" width="360" height="44" rx="11" fill="#0d131b" stroke="#303a48"/>
+    <text x="1173" y="379" fill="#dbe1e8" font-size="11" font-weight="650">Normal Hat · 1.87 × 2.5 × 1.87</text>
+    <path d="m1496 369 5 5 5-5" fill="none" stroke="#768395" stroke-width="1.5"/>
+
+    <g>
+      <circle cx="1170" cy="434" r="11" fill="#173129"/>
+      <path d="m1165 434 3 3 7-8" fill="none" stroke="#72e5c5" stroke-width="1.8"/>
+      <text x="1190" y="431" fill="#e5e9ee" font-size="11" font-weight="700">Single mesh object</text>
+      <text x="1190" y="448" fill="#738092" font-size="9">Merged correctly for export.</text>
+      <line x1="1158" y1="469" x2="1518" y2="469" stroke="#283240"/>
+
+      <circle cx="1170" cy="496" r="11" fill="#173129"/>
+      <path d="m1165 496 3 3 7-8" fill="none" stroke="#72e5c5" stroke-width="1.8"/>
+      <text x="1190" y="493" fill="#e5e9ee" font-size="11" font-weight="700">Triangle budget passed</text>
+      <text x="1190" y="510" fill="#738092" font-size="9">Comfortably below the current limit.</text>
+      <line x1="1158" y1="531" x2="1518" y2="531" stroke="#283240"/>
+
+      <circle cx="1170" cy="558" r="11" fill="#173129"/>
+      <path d="m1165 558 3 3 7-8" fill="none" stroke="#72e5c5" stroke-width="1.8"/>
+      <text x="1190" y="555" fill="#e5e9ee" font-size="11" font-weight="700">Hat bounds passed</text>
+      <text x="1190" y="572" fill="#738092" font-size="9">Dimensions fit the selected target.</text>
+    </g>
+
+    <rect x="1158" y="609" width="360" height="88" rx="14" fill="#171c28" stroke="#343d4d"/>
+    <rect x="1174" y="625" width="32" height="32" rx="10" fill="#24263a"/>
+    <path d="M1190 633l-8 3v6c0 5 3 8 8 10 5-2 8-5 8-10v-6Z" fill="none" stroke="#9e90ff" stroke-width="1.5"/>
+    <text x="1220" y="640" fill="#ebeef2" font-size="10" font-weight="720">Studio validation still required</text>
+    <text x="1220" y="658" fill="#7e8a9b" font-size="8.5">Finish in Blender, then test with the AFT.</text>
+    <text x="1174" y="680" fill="#a5afbb" font-size="8.5">FormMint creates a production-ready starting point.</text>
+
+    <rect x="1158" y="725" width="360" height="48" rx="13" fill="#c9f15b"/>
+    <path d="M1289 738v14m0 0 5-5m-5 5-5-5m-3 11h16" fill="none" stroke="#10151c" stroke-width="1.7"/>
+    <text x="1310" y="754" fill="#10151c" font-size="12" font-weight="820">Export .GLB</text>
+
+    <rect x="1158" y="785" width="113" height="43" rx="11" fill="#111822" stroke="#303a48"/>
+    <text x="1200" y="811" fill="#d7dde4" font-size="10" font-weight="720">.OBJ</text>
+    <rect x="1281" y="785" width="113" height="43" rx="11" fill="#111822" stroke="#303a48"/>
+    <text x="1324" y="811" fill="#d7dde4" font-size="10" font-weight="720">.PNG</text>
+    <rect x="1404" y="785" width="114" height="43" rx="11" fill="#111822" stroke="#303a48"/>
+    <text x="1431" y="811" fill="#d7dde4" font-size="10" font-weight="720">PROJECT</text>
+
+    <circle cx="1170" cy="865" r="4" fill="#67e1c1"/>
+    <text x="1183" y="869" fill="#7c899a" font-size="9" font-weight="630">PRIVATE BY DEFAULT · NO API KEY · NO TELEMETRY</text>
   </g>
 </svg>
