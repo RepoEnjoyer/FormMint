@@ -1,0 +1,25 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  publish-v2:
+    if: github.event.head_commit.message == 'chore: publish FormMint v2.0.0'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+      - name: Publish v2.0.0
+        run: >-
+          gh release create v2.0.0
+          --target "$GITHUB_SHA"
+          --title "FormMint v2.0.0 — Private model preflight"
+          --notes-file .github/release-notes/v2.0.0.md
+        env:
+          GH_TOKEN: ${{ github.token }}
