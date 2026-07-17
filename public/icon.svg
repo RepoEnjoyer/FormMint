@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">FormMint</title>
+  <rect width="64" height="64" rx="18" fill="#19151f"/>
+  <path d="M16 24 32 14l16 10v17L32 51 16 41Z" fill="none" stroke="#f0ff63" stroke-width="4" stroke-linejoin="round"/>
+  <path d="m16 24 16 10 16-10M32 34v17" fill="none" stroke="#ff795c" stroke-width="4" stroke-linejoin="round"/>
+</svg>
