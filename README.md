@@ -17,8 +17,6 @@ FormMint inspects the model you actually intend to finish. Drop in a GLB, GLTF, 
 
 It can create a reversible prepared copy by merging render meshes, removing zero-area triangles, rebuilding normals, recentering geometry, stripping rigid-incompatible attributes, and scaling oversized models down to the selected planning boundary. It never claims that a browser check guarantees Marketplace acceptance.
 
-<p align="center"><a href="https://repoenjoyer.github.io/FormMint/"><strong>Open the local-first web app →</strong></a></p>
-
 ![FormMint imported-model preflight workspace](docs/preview.svg)
 
 > The interface is local-first and contains no analytics, account system, Marketplace credentials, or application network client. Roblox Studio and current official validation remain authoritative.
@@ -102,6 +100,10 @@ For a production build:
 npm run check
 npm run preview
 ```
+
+### Optional GitHub Pages deployment
+
+The repository includes a manual **Deploy Pages** workflow. Before its first run, a repository administrator must choose **Settings → Pages → Build and deployment → Source → GitHub Actions**. GitHub does not allow a normal workflow token to create that initial Pages site setting. After the one-time setting is enabled, run **Deploy Pages** from the Actions tab.
 
 ## Commands
 
